@@ -4,20 +4,31 @@
         <title>JSON to CSV Converter</title>
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="main.js"></script>
-        <script type="text/javascript" src="convert.js"></script>
+        <script type="text/javascript" src="data.js"></script>
     </head>
 
     <body>
-        <h1>Json to Csv Converter</h1>
+        <div class="grid-container">
+            <div class="header">
+                <h1>Json to Csv Converter</h1>
+            </div>
+            
 
-        <fieldset>
-            <label for="json-text-field">Enter Json Text</label>
-            <textarea id="json-text-field" rows="20" cols="90"></textarea>
-            <label for="json-file-input"></label>
-            <input type="file" name="json-file" id="json-file-input">
-            <label for="convert-btn"></label>
-            <input type="button" value="Convert" id="convert-btn">
-        </fieldset>
+            <div class="content-text">
+                <label for="json-text-field" id="json-textfield-label">Enter Json Text</label>
+                <textarea id="json-textfield" rows="20" cols="90"></textarea>
+            </div>
+            
+            <div class="content-input">
+                <label for="json-file-input" id="json-file-input-label">Or Choose Json File</label>
+                <input type="file" name="json-file" id="json-file-input">
+            </div>
+
+            <div>
+                <input type="button" value="Convert" class="content-btn" id="convert-btn" onclick="clickButton()">
+            </div>
+            
+        </div>
 
     </body>
 </html>
