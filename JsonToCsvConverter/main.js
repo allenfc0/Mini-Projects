@@ -59,12 +59,18 @@ function clickConvertBtn() {
         console.log(csvRows);
 
         //create a file to download directly to the computer
-        const blob = new Blob([data], {type: "txt/csv"});
+        const blob = new Blob([csvRows], {type: "txt/csv"});
         const url = window.URL.createObjectURL(blob);
         const aLink = document.createElement("a");
+        const aLinkText = document.createTextNode("download.csv");
+        //set attributes for the download link
         aLink.setAttribute("href", url);
         aLink.setAttribute("download", "download.csv");
-        
+        aLink.setAttribute("id", "csv-download-link");
+        aLink.appendChild(aLinkText);
+
+        //add the a tag to the document
+        document.getElementById("json-results").appendChild(aLink);
     } catch (e) {
         console.log(e);
     }
