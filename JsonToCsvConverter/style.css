@@ -62,6 +62,18 @@ div button {
     
 }
 
-#json-textfield-label {
+#convert-btn {
+    margin-bottom: 20px;
+}
+
+#csv-download-link {
+    color: red;
+}
+
+#csv-download-link::before {
+    content: "It's ready! ";
+    display: block;
+    color: white;
+    text-decoration: none;
     
 }
