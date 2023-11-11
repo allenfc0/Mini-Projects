@@ -5,57 +5,55 @@ convertBtn.addEventListener('click', clickConvertBtn);
 
 function clickConvertBtn() {
 
+    let data;
+    let file;
+
+    //sample data
+    data = [
+        {
+            "beverage":"coke",
+            "quantity":750,
+            "company":"the coca-cola company",
+            "flavor":"cola"
+        },
+        {
+            "beverage":"sprite",
+            "quantity":250,
+            "company":"the coca-cola company",
+            "flavor":"lemon-lime"
+        },
+        {
+            "beverage":"sunny d",
+            "quantity":500,
+            "company":"sunny delight beverages",
+            "flavor":"orange"
+        }
+    ];
+
     try {
-        let data;
-        let file;
         //get the data
-        data = {
-            "Product": {
-                "0": "Cola",
-                "1": "Lemon",
-                "2": "Orange",
-                "3": "Litchi"
-            }, 
-            "Quantity": {
-                "0": 700,
-                "1": 250,
-                "2": 100,
-                "3": 200
-            }
-        };
-
-        
-
         //data = document.getElementById("json-textfield").value;
 
         //formatting starts here
         let csvRows = "";
 
-        //get all the headers for the .csv file
-        let headers = Object.keys(data);
-        csvRows += headers.join(",") + "\n";
-    
+        //all the keys are the headers for the .csv
+        let headers = Object.keys(data[0]);
+        //convert the headers array to a string and separate by a ","
+        csvRows += headers.join(",");
+        //go to a new line
+        csvRows += "\n";
 
-        //switch object(json format) to an array in order to loop through it
-
-        //enter the corresponding data for each column
-        //this code only works for this specific data object variable - Will ix this later
-        //possible solution: convert json object to an array
+        //enter the corresponding values for each column
         let values = "";
-        for(let i = 0; i < Object.values(data.Product).length; i++) {
-            //console.log(data["Product"][i]);
-            values += data["Product"][i] + ",";
-
-            //console.log(data["Quantity"][i]);
-            values += data["Quantity"][i];
-            
+        for(let i = 0; i < data.length; i++) {
+            for(let j = 0; j < data[0].length; j++) {
+                values += data[i][j] + ",";
+                console.log(data[i][j]);
+            }
             csvRows += values + "\n";
-            
-            
-            values = "";
         }
         
-
         createCsv(csvRows);
     } catch (e) {
         console.log(e);
@@ -63,6 +61,10 @@ function clickConvertBtn() {
     
     
     
+}
+
+const convertJsonToArray = () => {
+
 }
 
 const createCsv = (csvRows) => {
