@@ -29,53 +29,55 @@ function clickConvertBtn() {
         //data = document.getElementById("json-textfield").value;
 
         //formatting starts here
-        let csvRows = [];
+        let csvRows = "";
 
         //get all the headers for the .csv file
         let headers = Object.keys(data);
-        csvRows.push(headers.join(","));
+        csvRows += headers.join(",") + "\n";
+    
+
+        //switch object(json format) to an array in order to loop through it
 
         //enter the corresponding data for each column
         //this code only works for this specific data object variable - Will ix this later
         //possible solution: convert json object to an array
-        let values = [];
+        let values = "";
         for(let i = 0; i < Object.values(data.Product).length; i++) {
             //console.log(data["Product"][i]);
-            values.push(data["Product"][i]);
+            values += data["Product"][i] + ",";
 
             //console.log(data["Quantity"][i]);
-            values.push(data["Quantity"][i]);
+            values += data["Quantity"][i];
             
-            csvRows.push(values.join(","));
-            values = [];
+            csvRows += values + "\n";
+            
+            
+            values = "";
         }
         
-        csvRows.join("\n");
-        
-        
 
-        //csvRows.push(values.join(","));
-
-        console.log(csvRows);
-
-        //create a file to download directly to the computer
-        const blob = new Blob([csvRows], {type: "txt/csv"});
-        const url = window.URL.createObjectURL(blob);
-        const aLink = document.createElement("a");
-        const aLinkText = document.createTextNode("download.csv");
-        //set attributes for the download link
-        aLink.setAttribute("href", url);
-        aLink.setAttribute("download", "download.csv");
-        aLink.setAttribute("id", "csv-download-link");
-        aLink.appendChild(aLinkText);
-
-        //add the a tag to the document
-        document.getElementById("json-results").appendChild(aLink);
+        createCsv(csvRows);
     } catch (e) {
         console.log(e);
     }
     
     
     
+}
+
+const createCsv = (csvRows) => {
+    //create a file to download directly to the computer
+    const blob = new Blob([csvRows], {type: "txt/csv"});
+    const url = window.URL.createObjectURL(blob);
+    const aLink = document.createElement("a");
+    const aLinkText = document.createTextNode("download.csv");
+    //set attributes for the download link
+    aLink.setAttribute("href", url);
+    aLink.setAttribute("download", "download.csv");
+    aLink.setAttribute("id", "csv-download-link");
+    aLink.appendChild(aLinkText);
+
+    //add the a tag to the document
+    document.getElementById("json-results").appendChild(aLink);
 }
 
