@@ -8,31 +8,12 @@ function clickConvertBtn() {
     let data;
     let file;
 
-    //sample data
-    data = [
-        {
-            "beverage":"coke",
-            "quantity":750,
-            "company":"the coca-cola company",
-            "flavor":"cola"
-        },
-        {
-            "beverage":"sprite",
-            "quantity":250,
-            "company":"the coca-cola company",
-            "flavor":"lemon-lime"
-        },
-        {
-            "beverage":"sunny d",
-            "quantity":500,
-            "company":"sunny delight beverages",
-            "flavor":"orange"
-        }
-    ];
+    
 
     try {
         //get the data
-        //data = document.getElementById("json-textfield").value;
+        data = JSON.parse(document.getElementById("json-textfield").value + "");
+        console.log(data);
 
         //formatting starts here
         let csvRows = "";
