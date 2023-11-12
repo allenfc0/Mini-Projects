@@ -45,13 +45,11 @@ function clickConvertBtn() {
         csvRows += "\n";
 
         //enter the corresponding values for each column
-        let values = "";
         for(let i = 0; i < data.length; i++) {
-            for(let j = 0; j < data[0].length; j++) {
-                values += data[i][j] + ",";
-                console.log(data[i][j]);
+            for(let value in data[i]) {
+                csvRows += data[i][value] + ",";
             }
-            csvRows += values + "\n";
+            csvRows += "\n";
         }
         
         createCsv(csvRows);
