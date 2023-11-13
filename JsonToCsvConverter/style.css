@@ -71,9 +71,7 @@ div button {
 }
 
 #csv-download-link::before {
-    content: "It's ready! ";
+    content: "";
     display: block;
-    color: white;
-    text-decoration: none;
     
 }
