@@ -13,23 +13,28 @@ function clickConvertBtn() {
 
     try {
         //get the data
-        data = JSON.parse(document.getElementById("json-textfield").value + "");
-        //console.log(data);
+        data = (document.getElementById("json-textfield").value + "");
+
+        if(!data) {
+            console.log("no text here. Checking for file");
+        }
+
+        let parseData = JSON.parse(data);
 
         //formatting starts here
         let csvRows = "";
 
         //all the keys are the headers for the .csv
-        let headers = Object.keys(data[0]);
+        let headers = Object.keys(parseData[0]);
         //convert the headers array to a string and separate by a ","
         csvRows += headers.join(",");
         //go to a new line
         csvRows += "\n";
 
         //enter the corresponding values for each column
-        for(let i = 0; i < data.length; i++) {
-            for(let value in data[i]) {
-                csvRows += data[i][value] + ",";
+        for(let i = 0; i < parseData.length; i++) {
+            for(let value in parseData[i]) {
+                csvRows += parseData[i][value] + ",";
             }
             csvRows += "\n";
         }
