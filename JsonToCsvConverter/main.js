@@ -6,10 +6,7 @@ let createdFile;
 
 function clickConvertBtn() {
 
-    let data;
-    let file;
-
-    
+    let data;    
 
     try {
         //get the data
@@ -17,6 +14,8 @@ function clickConvertBtn() {
 
         if(!data) {
             console.log("no text here. Checking for file");
+            data = document.getElementById("json-file-input").files;
+            console.log(data);
         }
 
         let parseData = JSON.parse(data);
