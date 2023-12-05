@@ -41,25 +41,9 @@ div button {
     border-radius: 5px;
 }
 
-.content-text {
-    
-}
-
 #json-textfield-label {
     position: relative;
     display: block;
-}
-
-.content-input {
-    
-}
-
-#json-file-input-label {
-    display: block;
-}
-
-.content-btn {
-    
 }
 
 #convert-btn {
